@@ -11,3 +11,6 @@
      stpull = "!f() { a1=$1; a2=$2; git subtree pull --prefix \"$a1\" \"$a1\" \"$a2\"; }; f"
      rlst = "!f() { a1=$1; a2=$2; shift;shift; a3=$@; git subtree add --prefix \"$a1\" \"$a2\" $a3; git config -f .gitconfig --add remote.\"$a1\".url \"$a2\"; git config -f .gitconfig --add remote.\"$a1\".fetch \"+refs/heads/*:refs/remotes/origin/*\"; }; f"
 
+[remote "test/remote/vienas"]
+	url = git@github.com:blinkinglight/test-repo2.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
