@@ -6,8 +6,10 @@
 # > git st path/to/subtree remote_or_url branch [--squash]
 
 [alias]
-     # rl = "!f() { git config -f .gitconfig --add remote.\"$1\".url \"$2\"; git config -f .gitconfig --add remote.\"$1\".fetch \"+refs/heads/*:refs/remotes/origin/*\"; }; f"
-     stpush = "!f() { a1=$1; a2=$2; git subtree push --prefix \"$a1\" \"$a1\" \"$a2\"; }; f"
-     stpull = "!f() { a1=$1; a2=$2; git subtree pull --prefix \"$a1\" \"$a1\" \"$a2\"; }; f"
+     rl = "!f() { git config -f .gitconfig --add remote.\"$1\".url \"$2\"; git config -f .gitconfig --add remote.\"$1\".fetch \"+refs/heads/*:refs/remotes/origin/*\"; }; f"
+     st = "!f() { a1=$1; a2=$2; shift;shift; a3=$@; git subtree add --prefix \"$a1\" \"$a2\" $a3; }; f"
      rlst = "!f() { a1=$1; a2=$2; shift;shift; a3=$@; git subtree add --prefix \"$a1\" \"$a2\" $a3; git config -f .gitconfig --add remote.\"$a1\".url \"$a2\"; git config -f .gitconfig --add remote.\"$a1\".fetch \"+refs/heads/*:refs/remotes/origin/*\"; }; f"
 
+[remote "test1"]
+        url = git@github.com:blinkinglight/test-repo2.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
