@@ -8,11 +8,8 @@
 [alias]
      rl = "!f() { git config -f .gitconfig --add remote.\"$1\".url \"$2\"; git config -f .gitconfig --add remote.\"$1\".fetch \"+refs/heads/*:refs/remotes/origin/*\"; }; f"
      st = "!f() { a1=$1; a2=$2; shift;shift; a3=$@; git subtree add --prefix \"$a1\" \"$a2\" $a3; }; f"
+     rlst = "!f() { a1=$1; a2=$2; shift;shift; a3=$@; git subtree add --prefix \"$a1\" \"$a2\" $a3; git config -f .gitconfig --add remote.\"$a1\".url \"$a2\"; git config -f .gitconfig --add remote.\"$a1\".fetch \"+refs/heads/*:refs/remotes/origin/*\"; }; f"
 
 [remote "test1"]
         url = git@github.com:blinkinglight/test-repo2.git
         fetch = +refs/heads/*:refs/remotes/origin/*
-
-[remote "testremote"]
-	url = git@github.com:blinkinglight/test-repo2.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
